@@ -73,7 +73,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#d6eef7;min-height:100vh
 .card:hover .card-back{border-color:#FFD700;box-shadow:0 6px 18px rgba(0,100,150,0.4);}
 .card-front{transform:rotateY(180deg);border:3px solid #00aeef;box-shadow:0 3px 10px rgba(0,174,239,0.2);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .card.matched .card-front{border-color:#27ae60;box-shadow:0 3px 14px rgba(39,174,96,0.35);}
-.card-front img{width:90%;height:90%;object-fit:contain;}
+.card-front img{width:100%;height:100%;object-fit:cover;}
 .card-front .fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:0.85rem;color:white;padding:8px;line-height:1.3;}
 .win-screen{display:none;text-align:center;background:white;border:3px solid #00aeef;border-radius:14px;padding:20px;max-width:440px;margin:0 auto 14px;box-shadow:0 4px 20px rgba(0,174,239,0.2);}
 .win-screen.show{display:block;}
