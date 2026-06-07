@@ -71,9 +71,9 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#d6eef7;min-height:100vh
 .card-back::before{content:'';position:absolute;inset:0;background-image:linear-gradient(45deg,rgba(255,255,255,0.18) 25%,transparent 25%),linear-gradient(-45deg,rgba(255,255,255,0.18) 25%,transparent 25%),linear-gradient(45deg,transparent 75%,rgba(255,255,255,0.18) 75%),linear-gradient(-45deg,transparent 75%,rgba(255,255,255,0.18) 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0;}
 .card-back .diamond{position:relative;z-index:1;width:44%;aspect-ratio:1;background:rgba(255,255,255,0.25);transform:rotate(45deg);border:3px solid rgba(255,255,255,0.7);border-radius:4px;}
 .card:hover .card-back{border-color:#FFD700;box-shadow:0 6px 18px rgba(0,100,150,0.4);}
-.card-front{transform:rotateY(180deg);border:3px solid #00aeef;box-shadow:0 3px 10px rgba(0,174,239,0.2);overflow:hidden;display:flex;align-items:center;justify-content:center;padding:10px;}
+.card-front{transform:rotateY(180deg);border:3px solid #00aeef;box-shadow:0 3px 10px rgba(0,174,239,0.2);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .card.matched .card-front{border-color:#27ae60;box-shadow:0 3px 14px rgba(39,174,96,0.35);}
-.card-front img{width:100%;height:100%;object-fit:contain;}
+.card-front img{width:100%;height:100%;object-fit:cover;display:block;}
 .card-front .fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:0.85rem;color:white;padding:8px;line-height:1.3;}
 .win-screen{display:none;text-align:center;background:white;border:3px solid #00aeef;border-radius:14px;padding:20px;max-width:440px;margin:0 auto 14px;box-shadow:0 4px 20px rgba(0,174,239,0.2);}
 .win-screen.show{display:block;}
