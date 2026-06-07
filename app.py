@@ -62,14 +62,14 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#d6eef7;min-height:100vh
 .stat{background:white;border:2px solid #00aeef;border-radius:10px;padding:8px 18px;text-align:center;min-width:90px;box-shadow:0 2px 8px rgba(0,174,239,0.15);}
 .stat-val{font-size:1.4rem;font-weight:800;color:#005f8e;}
 .stat-lbl{font-size:0.6rem;color:#4a8fb0;text-transform:uppercase;letter-spacing:1px;}
-.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-width:840px;margin:0 auto 16px;}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-width:924px;margin:0 auto 16px;}
 .card{aspect-ratio:3/4;perspective:900px;cursor:pointer;}
 .card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
 .card.flipped .card-inner,.card.matched .card-inner{transform:rotateY(180deg);}
 .card-front,.card-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
 .card-back{background:#00aeef;box-shadow:0 3px 10px rgba(0,100,150,0.25);overflow:hidden;border:2px solid #0090cc;display:flex;align-items:center;justify-content:center;}
 .card-back::before{content:'';position:absolute;inset:0;background-image:linear-gradient(45deg,rgba(255,255,255,0.18) 25%,transparent 25%),linear-gradient(-45deg,rgba(255,255,255,0.18) 25%,transparent 25%),linear-gradient(45deg,transparent 75%,rgba(255,255,255,0.18) 75%),linear-gradient(-45deg,transparent 75%,rgba(255,255,255,0.18) 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0;}
-.card-back .diamond{position:relative;z-index:1;width:44%;aspect-ratio:1;background:rgba(255,255,255,0.25);transform:rotate(45deg);border:3px solid rgba(255,255,255,0.7);border-radius:4px;}
+.card-label{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.9);letter-spacing:1px;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,0.4);}.card-back .diamond{position:relative;z-index:1;width:44%;aspect-ratio:1;background:rgba(255,255,255,0.25);transform:rotate(45deg);border:3px solid rgba(255,255,255,0.7);border-radius:4px;}
 .card:hover .card-back{border-color:#FFD700;box-shadow:0 6px 18px rgba(0,100,150,0.4);}
 .card-front{transform:rotateY(180deg);border:3px solid #00aeef;box-shadow:0 3px 10px rgba(0,174,239,0.2);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .card.matched .card-front{border-color:#27ae60;box-shadow:0 3px 14px rgba(39,174,96,0.35);}
@@ -115,12 +115,13 @@ function newGame(){
 }
 function renderGrid(){
   const g=document.getElementById("grid");g.innerHTML="";
-  cards.forEach(card=>{
+  cards.forEach((card,idx)=>{
     const el=document.createElement("div");el.className="card";
     const front = card.l
       ? '<img src="'+card.l+'" alt="'+card.n+'">'
       : '<div class="fallback" style="background:'+card.c+'">'+card.n+'</div>';
-    el.innerHTML='<div class="card-inner"><div class="card-back"><div class="diamond"></div></div><div class="card-front" style="background:'+card.c+'">'+front+'</div></div>';
+    const col=String.fromCharCode(65+(idx%6));const row=Math.floor(idx/6)+1;const lbl=col+row;
+    el.innerHTML='<div class="card-inner"><div class="card-back"><div class="diamond"></div><div class="card-label">'+lbl+'</div></div><div class="card-front" style="background:'+card.c+'">'+front+'</div></div>';
     el.addEventListener("click",()=>flip(card,el));
     g.appendChild(el);
   });
